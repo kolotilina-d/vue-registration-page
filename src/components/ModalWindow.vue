@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineEmits, defineProps } from 'vue'
 
 const props = defineProps({
@@ -14,7 +14,7 @@ function close() {
 
 <template>
   <transition name="modal-fade">
-    <div v-if="show" class="modal-overlay" @click.self="close">
+    <div v-if="props.show" class="modal-overlay" @click.self="close">
       <div class="modal-window">
         <button class="modal-close" @click="close">✖</button>
         <header class="modal-header">

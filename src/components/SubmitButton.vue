@@ -14,7 +14,7 @@ const onClick = (event: Event) => {
 
 <template>
   <button
-    :disabled="disabled"
+    :disabled="props.disabled"
     type="submit"
     class="button"
     @click="onClick"

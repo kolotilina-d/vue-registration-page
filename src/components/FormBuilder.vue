@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue';
-import type { FieldConfig } from './types';
+import type { FieldConfig } from '../assets/types';
 import { validateField } from '../assets/helpers';
 import ModalWindow from './ModalWindow.vue';
 import SubmitButton from './SubmitButton.vue';
@@ -58,8 +58,8 @@ const submitForm = () => {
 
       <!-- Рендеринг по типу поля -->
       <template v-if="field.type === 'input'">
-        <input :type="field.inputType || 'text'" v-model.lazy="formState[field.name]"
-          @blur="handleChange(field, formState[field.name])" :placeholder="field.placeholder" />
+        <input :type="field.inputType || 'text'" v-model="formState[field.name]"
+          @input="handleChange(field, formState[field.name])"  :placeholder="field.placeholder" />
       </template>
 
       <template v-else-if="field.type === 'select'">
@@ -99,7 +99,6 @@ const submitForm = () => {
 </template>
 
 <style scoped lang="scss">
-
 .form-field {
   margin-bottom: .7rem;
 }

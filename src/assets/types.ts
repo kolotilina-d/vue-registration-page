@@ -11,6 +11,7 @@ export interface BaseFieldConfig {
 export interface InputFieldConfig extends BaseFieldConfig {
   type: 'input';
   inputType?: 'text' | 'password' | 'email';
+  placeholder: string;
 }
 
 export interface SelectFieldConfig extends BaseFieldConfig {
