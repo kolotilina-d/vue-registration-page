@@ -1,0 +1,115 @@
+@mixin input-style {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid $secondary;
+  border-radius: 4px;
+  box-sizing: border-box;
+  &:focus-visible {
+    outline: 1px solid $primary;
+  }
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: $header !important;
+  }
+}
+
+@mixin button-style($bg, $color) {
+  width: 100%;
+  background: $bg;
+  color: $color;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  transition: background 0.2s;
+  &:hover {
+    background: darken($bg, 7%);
+  }
+  &:disabled {
+    background-color: $secondary;
+    cursor: not-allowed;
+  }
+}
+
+// Стилизуем чекбокс
+@mixin checkbox-style {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.1;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 5%;
+    height: 5%;
+    z-index: 10;
+
+    &:focus + .custom-checkbox {
+      box-shadow: 0 0 0 2px rgba(42, 124, 255, 0.15);
+      border-color: $checkbox-checked-bg;
+    }
+
+    &:checked + .custom-checkbox {
+      background: $checkbox-checked-bg;
+      border-color: $checkbox-checked-bg;
+
+      &::after {
+        opacity: 1;
+        transform: scale(0.7);
+      }
+    }
+  }
+
+  .custom-checkbox {
+    width: $checkbox-size;
+    height: $checkbox-size;
+    border: 1.5px solid $checkbox-border;
+    border-radius: $checkbox-radius;
+    background: #fff;
+    position: relative;
+    transition: border-color $checkbox-transition,
+      background $checkbox-transition, box-shadow $checkbox-transition;
+    flex-shrink: 0;
+    margin-top: 2px;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 1.5px;
+      width: 7px;
+      height: 11px;
+      border: solid $checkbox-checkmark;
+      border-width: 0 2px 2px 0;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity $checkbox-transition, transform $checkbox-transition;
+      transform: rotate(90deg) scale(0.7);
+    }
+  }
+
+  .agreement-text {
+    color: #444;
+    text-align: justify;
+    a {
+      color: $checkbox-checked-bg;
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@mixin flex-center {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
